@@ -1,11 +1,16 @@
 {
   "name": "spendwise",
+  "private": true,
   "version": "1.0.0",
   "description": "SpendWise - Full Stack Expense Tracker",
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "scripts": {
-    "install:all": "cd server && npm install && cd ../client && npm install && cd ..",
-    "build": "npm install --include=dev && cd client && npm install --include=dev && npm run build",
-    "start": "node server/server.js",
+    "install:all": "npm install",
+    "build": "cd client && npm run build",
+    "start": "npm run build && cd server && npm start",
     "dev:server": "cd server && npm run dev",
     "dev:client": "cd client && npm run dev",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
